@@ -1,0 +1,11 @@
+# Python packages used by camera_sender
+# install_dependencies.sh installs most of these from apt (prebuilt for the Pi —
+# compiling opencv/av on a Pi Zero 2W takes hours). This file is the pip fallback.
+aiortc
+av
+aiohttp
+requests
+python-dotenv
+numpy
+opencv-python-headless
+onvif-zeep

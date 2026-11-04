@@ -1,0 +1,15 @@
+[Unit]
+Description=Camera Wi-Fi manager (auto-connect, hotspot setup fallback)
+After=NetworkManager.service
+Wants=NetworkManager.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 __SENDER_DIR__/wifi_manager.py --config __SENDER_DIR__/camera.ini
+Restart=always
+RestartSec=5
+StandardOutput=append:__LOG_DIR__/wifi_manager.log
+StandardError=append:__LOG_DIR__/wifi_manager.log
+
+[Install]
+WantedBy=multi-user.target

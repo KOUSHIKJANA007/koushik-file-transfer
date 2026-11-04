@@ -1,0 +1,493 @@
+/home/medtrainai/.local/lib/python3.13/site-packages/google_crc32c/__init__.py:29: RuntimeWarning: As the c extension couldn't be imported, `google-crc32c` is using a pure python implementation that is significantly slower. If possible, please configure a c build environment and compile the extension
+  warnings.warn(_SLOW_CRC32C_WARNING, RuntimeWarning)
+2026-09-03 15:22:00,947 - __main__ - INFO - 🚀 LiveSender | id=550e8400-e29b-41d4-a716-000000000030
+2026-09-03 15:22:00,948 - __main__ - INFO - 🔄 Retries automatically | liveserver down = normal
+2026-09-03 15:22:00,949 - __main__ - INFO - 🛑 Press Ctrl+C to stop
+2026-09-03 15:22:01,028 - __main__ - INFO - 🟢 Liveserver online | http://151.185.47.108:8080
+2026-09-03 15:22:01,028 - __main__ - INFO - 📡 Session 1 | http://151.185.47.108:8080
+2026-09-03 15:22:01,117 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 15:22:01,664 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 15:22:34,250 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 15:23:06,740 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 15:23:39,291 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 15:24:11,819 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 15:24:44,318 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 15:25:16,842 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 15:25:49,341 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 15:26:21,857 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 15:26:54,314 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 15:27:26,828 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 15:27:27,830 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 15:27:32,922 - __main__ - INFO - 📡 Session 2 | http://151.185.47.108:8080
+2026-09-03 15:27:32,992 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 15:27:33,442 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 15:28:05,982 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 15:28:38,856 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 15:29:11,727 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 15:29:44,630 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 15:30:17,568 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 15:30:50,087 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 15:31:22,652 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 15:31:55,233 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 15:32:27,793 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 15:33:00,258 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 15:33:01,260 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 15:33:06,358 - __main__ - INFO - 📡 Session 3 | http://151.185.47.108:8080
+2026-09-03 15:33:06,435 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 15:33:06,941 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 15:33:39,403 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 15:34:11,918 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 15:34:44,369 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 15:35:16,894 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 15:35:49,442 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 15:36:21,897 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 15:36:54,340 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 15:37:26,823 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 15:37:59,417 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 15:38:31,995 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 15:38:32,997 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 15:38:38,084 - __main__ - INFO - 📡 Session 4 | http://151.185.47.108:8080
+2026-09-03 15:38:38,152 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 15:38:38,587 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 15:39:11,098 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 15:39:43,517 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 15:40:15,942 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 15:40:48,445 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 15:41:20,948 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 15:41:53,455 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 15:41:59,828 - __main__ - INFO - 🔴 Liveserver went offline mid-session — restarting
+2026-09-03 15:41:59,869 - __main__ - INFO - ⏸  Liveserver unreachable | retrying every 30s
+2026-09-03 15:42:29,975 - __main__ - INFO - 🟢 Liveserver online | http://151.185.47.108:8080
+2026-09-03 15:42:29,980 - __main__ - INFO - 📡 Session 5 | http://151.185.47.108:8080
+2026-09-03 15:42:30,054 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 15:42:30,515 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 15:43:03,033 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 15:43:35,513 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 15:44:08,063 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 15:44:40,531 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 15:45:13,047 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 15:45:45,521 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 15:46:18,070 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 15:46:50,495 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 15:47:23,383 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 15:47:56,214 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 15:47:57,215 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 15:48:02,335 - __main__ - INFO - 📡 Session 6 | http://151.185.47.108:8080
+2026-09-03 15:48:02,410 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 15:48:02,999 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 15:48:35,753 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 15:49:08,680 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 15:49:41,677 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 15:50:16,615 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 15:50:49,094 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 15:51:21,593 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 15:51:54,052 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 15:52:26,504 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 15:52:59,077 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 15:53:31,579 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 15:53:32,581 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 15:53:37,673 - __main__ - INFO - 📡 Session 7 | http://151.185.47.108:8080
+2026-09-03 15:53:37,757 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 15:53:38,249 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 15:54:10,695 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 15:54:43,191 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 15:55:15,686 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 15:55:48,317 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 15:56:08,931 - __main__ - INFO - 🔴 Liveserver went offline mid-session — restarting
+2026-09-03 15:56:08,968 - __main__ - INFO - ⏸  Liveserver unreachable | retrying every 30s
+2026-09-03 15:56:39,058 - __main__ - INFO - 🟢 Liveserver online | http://151.185.47.108:8080
+2026-09-03 15:56:39,059 - __main__ - INFO - 📡 Session 8 | http://151.185.47.108:8080
+2026-09-03 15:56:39,127 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 15:56:39,581 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 15:57:12,174 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 15:57:45,432 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 15:58:17,904 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 15:58:50,267 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 15:59:22,943 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 15:59:55,766 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:00:28,477 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:01:01,347 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 16:01:34,024 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 16:02:08,272 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 16:02:09,274 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 16:02:14,368 - __main__ - INFO - 📡 Session 9 | http://151.185.47.108:8080
+2026-09-03 16:02:14,442 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:02:14,883 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:02:48,883 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:03:22,992 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:03:55,944 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:04:28,882 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:05:01,791 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:05:34,647 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:06:07,166 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:06:39,729 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 16:07:12,310 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 16:07:45,113 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 16:07:46,115 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 16:07:51,196 - __main__ - INFO - 📡 Session 10 | http://151.185.47.108:8080
+2026-09-03 16:07:51,270 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:07:51,698 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:08:24,295 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:08:56,802 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:09:29,334 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:10:01,909 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:10:34,404 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:11:06,942 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:11:39,693 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:12:12,503 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 16:12:45,413 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 16:13:18,093 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 16:13:19,095 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 16:13:24,215 - __main__ - INFO - 📡 Session 11 | http://151.185.47.108:8080
+2026-09-03 16:13:24,317 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:13:24,767 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:13:57,764 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:14:31,793 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:15:04,543 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:15:37,503 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:16:10,442 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:16:42,940 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:17:15,509 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:17:48,212 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 16:18:20,720 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 16:18:53,194 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 16:18:54,196 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 16:18:59,280 - __main__ - INFO - 📡 Session 12 | http://151.185.47.108:8080
+2026-09-03 16:18:59,353 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:18:59,780 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:19:32,296 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:20:04,844 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:20:37,382 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:21:09,983 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:21:42,438 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:22:14,974 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:22:47,708 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:23:20,287 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 16:23:52,844 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 16:24:26,448 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 16:24:27,450 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 16:24:32,527 - __main__ - INFO - 📡 Session 13 | http://151.185.47.108:8080
+2026-09-03 16:24:32,609 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:24:33,054 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:25:05,562 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:25:38,121 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:26:10,626 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:26:43,138 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:27:15,596 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:27:48,040 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:28:20,644 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:28:53,200 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 16:29:25,738 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 16:29:58,356 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 16:29:59,358 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 16:30:04,436 - __main__ - INFO - 📡 Session 14 | http://151.185.47.108:8080
+2026-09-03 16:30:04,506 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:30:04,955 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:30:37,493 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:31:10,008 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:31:42,580 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:32:15,054 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:32:47,674 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:32:57,288 - __main__ - INFO - 🔴 Liveserver went offline mid-session — restarting
+2026-09-03 16:32:57,327 - __main__ - INFO - ⏸  Liveserver unreachable | retrying every 30s
+2026-09-03 16:33:27,435 - __main__ - INFO - 🟢 Liveserver online | http://151.185.47.108:8080
+2026-09-03 16:33:27,435 - __main__ - INFO - 📡 Session 15 | http://151.185.47.108:8080
+2026-09-03 16:33:27,510 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:33:27,950 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:34:00,425 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:34:32,958 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:35:05,509 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:35:37,935 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:36:10,548 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:36:44,055 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:37:16,542 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:37:49,101 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 16:38:21,930 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 16:38:54,456 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 16:38:55,458 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 16:39:00,543 - __main__ - INFO - 📡 Session 16 | http://151.185.47.108:8080
+2026-09-03 16:39:00,623 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:39:01,049 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:39:33,597 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:40:06,189 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:40:38,649 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:41:11,220 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:41:43,704 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:42:16,513 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:42:49,143 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:43:21,666 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 16:43:54,097 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 16:44:26,698 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 16:44:27,699 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 16:44:32,796 - __main__ - INFO - 📡 Session 17 | http://151.185.47.108:8080
+2026-09-03 16:44:32,866 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:44:33,366 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:45:05,827 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:45:38,376 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:46:10,776 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:46:43,313 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:47:15,892 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:47:48,370 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:48:20,913 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:48:53,454 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 16:49:25,976 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 16:49:58,459 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 16:49:59,461 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 16:50:04,544 - __main__ - INFO - 📡 Session 18 | http://151.185.47.108:8080
+2026-09-03 16:50:04,620 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:50:05,055 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:50:37,569 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:51:09,986 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:51:42,483 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:52:14,934 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:52:47,481 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:53:20,034 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:53:52,634 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:54:25,095 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 16:54:57,684 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 16:55:30,181 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 16:55:31,183 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 16:55:36,269 - __main__ - INFO - 📡 Session 19 | http://151.185.47.108:8080
+2026-09-03 16:55:36,343 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 16:55:36,793 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 16:56:09,289 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 16:56:42,071 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 16:57:14,553 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 16:57:47,082 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 16:58:19,667 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 16:58:52,097 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 16:59:24,538 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 16:59:57,056 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:00:29,568 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:01:02,007 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:01:03,009 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:01:08,099 - __main__ - INFO - 📡 Session 20 | http://151.185.47.108:8080
+2026-09-03 17:01:08,171 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:01:08,643 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:01:41,200 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:02:13,713 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:02:46,191 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:03:18,752 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:03:51,257 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:04:23,785 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 17:04:56,196 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 17:05:28,742 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:06:01,270 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:06:33,787 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:06:34,789 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:06:39,872 - __main__ - INFO - 📡 Session 21 | http://151.185.47.108:8080
+2026-09-03 17:06:39,946 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:06:40,390 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:07:12,839 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:07:45,289 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:08:17,822 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:08:50,268 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:09:22,789 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:09:55,227 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 17:10:27,758 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 17:11:00,265 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:11:32,773 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:12:05,278 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:12:06,280 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:12:11,367 - __main__ - INFO - 📡 Session 22 | http://151.185.47.108:8080
+2026-09-03 17:12:11,448 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:12:11,892 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:12:44,342 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:13:17,012 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:13:49,469 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:14:22,043 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:14:54,522 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:15:26,999 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 17:15:59,469 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 17:16:31,913 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:17:04,418 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:17:36,901 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:17:37,903 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:17:42,983 - __main__ - INFO - 📡 Session 23 | http://151.185.47.108:8080
+2026-09-03 17:17:43,053 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:17:43,497 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:18:16,155 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:18:48,623 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:19:21,091 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:19:53,621 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:20:26,043 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:20:58,490 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 17:21:30,953 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 17:22:03,392 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:22:35,867 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:23:08,354 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:23:09,356 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:23:14,438 - __main__ - INFO - 📡 Session 24 | http://151.185.47.108:8080
+2026-09-03 17:23:14,512 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:23:14,971 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:23:47,384 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:24:19,820 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:24:52,255 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:25:24,730 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:25:57,227 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:26:29,630 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 17:27:02,079 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 17:27:34,554 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:28:07,117 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:28:39,690 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:28:40,691 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:28:45,782 - __main__ - INFO - 📡 Session 25 | http://151.185.47.108:8080
+2026-09-03 17:28:45,858 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:28:46,297 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:29:18,802 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:29:51,202 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:30:23,538 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:30:55,959 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:31:28,439 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:32:00,860 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 17:32:33,264 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 17:33:05,802 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:33:38,261 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:34:10,686 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:34:11,688 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:34:16,777 - __main__ - INFO - 📡 Session 26 | http://151.185.47.108:8080
+2026-09-03 17:34:16,863 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:34:17,322 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:34:49,674 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:35:22,113 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:35:54,547 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:36:26,944 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:36:59,377 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:37:31,797 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 17:38:04,360 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 17:38:36,787 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:39:09,192 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:39:41,559 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:39:42,561 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:39:47,650 - __main__ - INFO - 📡 Session 27 | http://151.185.47.108:8080
+2026-09-03 17:39:47,719 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:39:48,185 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:40:20,662 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:40:53,119 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:41:25,573 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:41:58,007 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:42:30,352 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:43:02,837 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 17:43:35,469 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 17:44:08,042 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:44:40,632 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:45:13,044 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:45:14,046 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:45:19,135 - __main__ - INFO - 📡 Session 28 | http://151.185.47.108:8080
+2026-09-03 17:45:19,208 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:45:19,652 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:45:51,962 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:46:24,528 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:47:04,993 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:47:40,970 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:48:13,504 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:48:45,911 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 17:49:18,329 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 17:49:50,756 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:50:23,178 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:50:55,690 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:50:56,691 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:51:01,777 - __main__ - INFO - 📡 Session 29 | http://151.185.47.108:8080
+2026-09-03 17:51:01,852 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:51:02,288 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:51:34,822 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:52:07,223 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:52:39,647 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:53:12,237 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:53:44,611 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:54:17,132 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 17:54:49,591 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 17:55:22,061 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 17:55:54,601 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 17:56:27,072 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 17:56:28,074 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 17:56:33,158 - __main__ - INFO - 📡 Session 30 | http://151.185.47.108:8080
+2026-09-03 17:56:33,238 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 17:56:33,679 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 17:57:06,187 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 17:57:38,638 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 17:58:12,231 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 17:58:49,430 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 17:59:23,344 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 17:59:56,133 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 18:00:28,915 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 18:01:01,435 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 18:01:33,893 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 18:02:06,365 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 18:02:07,366 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 18:02:12,446 - __main__ - INFO - 📡 Session 31 | http://151.185.47.108:8080
+2026-09-03 18:02:12,530 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 18:02:12,957 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 18:02:45,343 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 18:03:18,036 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 18:03:50,552 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 18:04:23,023 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 18:04:55,567 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 18:05:28,143 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 18:06:00,612 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 18:06:33,087 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 18:07:05,585 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 18:07:38,014 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 18:07:39,015 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 18:07:44,098 - __main__ - INFO - 📡 Session 32 | http://151.185.47.108:8080
+2026-09-03 18:07:44,183 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 18:07:44,599 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 18:08:17,322 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 18:08:49,746 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 18:09:22,155 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 18:09:54,701 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 18:10:27,180 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 18:10:59,648 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 18:11:32,133 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 18:12:04,587 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 18:12:37,166 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 18:13:09,632 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 18:13:10,634 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 18:13:15,719 - __main__ - INFO - 📡 Session 33 | http://151.185.47.108:8080
+2026-09-03 18:13:15,791 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 18:13:16,237 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 18:13:48,687 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 18:14:21,173 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 18:14:53,660 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 18:15:27,057 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 18:15:59,451 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 18:16:31,897 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 18:17:04,437 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 18:17:37,179 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 18:18:09,688 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 18:18:42,093 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 18:18:43,095 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 18:18:48,177 - __main__ - INFO - 📡 Session 34 | http://151.185.47.108:8080
+2026-09-03 18:18:48,253 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 18:18:48,772 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 18:19:21,154 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 18:19:53,590 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 18:20:26,087 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 18:20:59,730 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 18:21:32,130 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 18:22:04,567 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 18:22:37,482 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 18:23:09,908 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 18:23:42,508 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 18:24:14,879 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 18:24:15,881 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 18:24:20,965 - __main__ - INFO - 📡 Session 35 | http://151.185.47.108:8080
+2026-09-03 18:24:21,057 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 18:24:21,529 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 18:24:53,941 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 18:25:27,384 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 18:25:59,804 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
+2026-09-03 18:26:32,217 - __main__ - INFO - ⏳ Waiting for receiver... (120s elapsed, restart in 180s)
+2026-09-03 18:27:04,663 - __main__ - INFO - ⏳ Waiting for receiver... (150s elapsed, restart in 150s)
+2026-09-03 18:27:37,093 - __main__ - INFO - ⏳ Waiting for receiver... (180s elapsed, restart in 120s)
+2026-09-03 18:28:09,818 - __main__ - INFO - ⏳ Waiting for receiver... (210s elapsed, restart in 90s)
+2026-09-03 18:28:42,386 - __main__ - INFO - ⏳ Waiting for receiver... (240s elapsed, restart in 60s)
+2026-09-03 18:29:14,844 - __main__ - INFO - ⏳ Waiting for receiver... (270s elapsed, restart in 30s)
+2026-09-03 18:29:47,288 - __main__ - INFO - ⏳ Waiting for receiver... (300s elapsed, restart in 0s)
+2026-09-03 18:29:48,290 - __main__ - INFO - ⟳ No receiver after 300s — restarting session
+2026-09-03 18:29:53,374 - __main__ - INFO - 📡 Session 36 | http://151.185.47.108:8080
+2026-09-03 18:29:53,449 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-09-03 18:29:53,892 - __main__ - INFO - 📡 Offer sent — waiting for receiver...
+2026-09-03 18:30:26,329 - __main__ - INFO - ⏳ Waiting for receiver... (30s elapsed, restart in 270s)
+2026-09-03 18:30:58,822 - __main__ - INFO - ⏳ Waiting for receiver... (60s elapsed, restart in 240s)
+2026-09-03 18:31:31,188 - __main__ - INFO - ⏳ Waiting for receiver... (90s elapsed, restart in 210s)
