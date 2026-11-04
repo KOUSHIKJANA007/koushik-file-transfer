@@ -7,9 +7,12 @@ Behaviour
 1. On boot, give NetworkManager `boot_wait_sec` to join any SAVED Wi-Fi.
 2. If nothing joined, scan and try every saved network in range (strongest first).
 3. Still not connected -> SETUP MODE: Bluetooth is switched on and the camera
-   advertises a BLE service ("MTCam-0042"). The Flutter app connects over BLE
-   (data only: no pairing, no audio profile), reads the Wi-Fi list, writes
-   {"ssid","password","key"} and receives the result as a BLE notification.
+   advertises a BLE service ("MTCam-0042"). The Flutter app connects over BLE;
+   the phone shows its pairing popup ("Pair with MTCam-0042?"), after which the
+   link is encrypted. The app reads the Wi-Fi list, writes the network with the
+   password encrypted by the QR-sticker key (AES-GCM; the key never goes over the
+   air) and receives the result as a BLE notification. The controller runs in
+   LE-only mode, so no classic Bluetooth audio profile can ever be used.
 4. Once the camera has Wi-Fi, Bluetooth is switched OFF again (after
    `bt_off_after_setup_sec`), so it stays out of the way of GPIO / audio work.
 5. Wi-Fi lost for longer than `lost_grace_sec` -> saved networks are retried,
@@ -35,7 +38,9 @@ python3-dbus, python3-gi; run as root.
 """
 
 import argparse
+import base64
 import configparser
+import hashlib
 import json
 import logging
 import os
@@ -61,6 +66,7 @@ DEFAULTS = {
     "bt_off_after_setup_sec": "30",
     "bluetooth_default": "off",          # Bluetooth when Wi-Fi is fine and nothing asked for it
     "control_port": "8085",
+    "le_only": "yes",                    # BLE only: classic Bluetooth (audio) switched off
 }
 
 SAVED_PREFIX = "camwifi-"                # prefix for profiles created during setup
@@ -112,6 +118,7 @@ def load_config(path):
               "bt_off_after_setup_sec", "control_port"):
         w[k] = int(w[k])
     w["bluetooth_default"] = "on" if w["bluetooth_default"].lower() == "on" else "off"
+    w["le_only"] = w["le_only"].lower() not in ("no", "0", "false", "off")
     return w
 
 
@@ -326,13 +333,17 @@ class SetupState:
         self.on_status_change = None     # set by the BLE server -> notify subscribers
         self.bad_keys = 0
         self.locked_until = 0
+        self.nonce = secrets.token_hex(16)   # changes after every accepted request
 
     # wrong-key throttle: 5 wrong keys -> ignore setup writes for 60 s
     def check_key(self, key):
+        return self._auth_result(secrets.compare_digest(str(key or ""), self.setup_key))
+
+    def _auth_result(self, ok):
         now = time.time()
         if now < self.locked_until:
             return False
-        if secrets.compare_digest(str(key or ""), self.setup_key):
+        if ok:
             self.bad_keys = 0
             return True
         self.bad_keys += 1
@@ -342,9 +353,24 @@ class SetupState:
             log.warning("5 wrong setup keys — ignoring setup requests for 60 s")
         return False
 
+    def decrypt_password(self, body, ssid):
+        """AES-256-GCM: key = SHA-256(setup key), aad = nonce + ssid. Raises ValueError."""
+        try:
+            from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+        except ImportError:
+            raise ValueError("encrypted payload needs python3-cryptography on the Pi")
+        key = hashlib.sha256(self.setup_key.encode()).digest()
+        try:
+            iv = base64.b64decode(str(body.get("iv") or ""), validate=True)
+            ct = base64.b64decode(str(body.get("ct") or ""), validate=True)
+            plain = AESGCM(key).decrypt(iv, ct, (self.nonce + ssid).encode("utf-8"))
+            return plain.decode("utf-8")
+        except Exception:
+            raise ValueError("invalid setup key")
+
     def info(self):
         return {"camera_uuid": self.camera_uuid, "name": self.ble_name,
-                "api_version": API_VERSION,
+                "api_version": API_VERSION, "nonce": self.nonce,
                 "wifi": {"connected": self.wifi_connected, "ssid": self.wifi_ssid}}
 
     def networks_payload(self):
@@ -376,25 +402,38 @@ class SetupState:
         """Validate a setup request (from BLE). Returns None if accepted, else error text."""
         if not isinstance(body, dict):
             return "body must be a JSON object"
-        if not self.check_key(body.get("key")):
-            return "invalid setup key"
         ssid = str(body.get("ssid") or "").strip()
-        password = str(body.get("password") or "")
         if not ssid or len(ssid.encode("utf-8")) > 32:
             return "ssid must be 1-32 bytes"
+        if "ct" in body:                       # app: password encrypted with the QR key
+            if str(body.get("nonce") or "") != self.nonce:
+                return "stale nonce — read info again"
+            try:
+                password = self.decrypt_password(body, ssid)
+                ok = True
+            except ValueError as e:
+                if str(e) != "invalid setup key":
+                    return str(e)
+                password, ok = "", False
+            if not self._auth_result(ok):
+                return "invalid setup key"
+        else:                                  # manual testing: plain key in the JSON
+            if not self.check_key(body.get("key")):
+                return "invalid setup key"
+            password = str(body.get("password") or "")
         if password and not (8 <= len(password) <= 63):
             return "password must be 8-63 characters"
         if self.connect_state == "connecting":
             return "already connecting"
+        self.nonce = secrets.token_hex(16)    # a captured request can't be replayed
         self.set_connect("connecting", error="", ssid=ssid)
         self.requests.put(("connect", ssid, password, bool(body.get("hidden", False))))
         return None
 
     def submit_command(self, body):
+        # rescan is harmless and the link is already paired + encrypted: no key needed
         if not isinstance(body, dict):
             return "body must be a JSON object"
-        if not self.check_key(body.get("key")):
-            return "invalid setup key"
         if body.get("cmd") == "rescan":
             self.requests.put(("rescan",))
             return None
@@ -405,9 +444,14 @@ class SetupState:
 #  Bluetooth power (rfkill) — works without D-Bus
 # ════════════════════════════════════════════════════════════════════════════
 
-def bt_set_power(on):
+def bt_set_power(on, le_only=True):
     run(["rfkill", "unblock" if on else "block", "bluetooth"])
     if on:
+        if le_only and shutil.which("btmgmt"):
+            # LE only (no classic BR/EDR -> no audio profiles), Secure Connections, bonding
+            for args in (["power", "off"], ["bredr", "off"], ["le", "on"], ["sc", "on"],
+                         ["bondable", "on"], ["power", "on"]):
+                run(["btmgmt", "--index", "0"] + args, timeout=10)
         run(["bluetoothctl", "power", "on"], timeout=10)
     log.info("🔵 Bluetooth %s", "ON" if on else "OFF")
 
@@ -585,6 +629,61 @@ def make_ble_server(state):
             if self.notifying and self.read_fn:
                 self.PropertiesChanged(CHRC_IFACE, {"Value": to_bytes(self.read_fn())}, [])
 
+    AGENT_IFACE = "org.bluez.Agent1"
+
+    class Rejected(dbus.exceptions.DBusException):
+        _dbus_error_name = "org.bluez.Error.Rejected"
+
+    class Agent(dbus.service.Object):
+        """NoInputNoOutput agent: accepts "Just Works" LE pairing while setup is on.
+        Who may configure Wi-Fi is decided by the QR key, not by the pairing."""
+        def __init__(self, bus, allow):
+            self.path = APP_PATH + "/agent"
+            self.allow = allow
+            dbus.service.Object.__init__(self, bus, self.path)
+
+        def _check(self, what, device):
+            if not self.allow():
+                log.info("Pairing refused (%s) — setup is not active", what)
+                raise Rejected("setup not active")
+            log.info("🔐 Pairing accepted (%s) %s", what, str(device).split("/")[-1])
+
+        @dbus.service.method(AGENT_IFACE)
+        def Release(self):
+            pass
+
+        @dbus.service.method(AGENT_IFACE, in_signature="o")
+        def RequestAuthorization(self, device):
+            self._check("just works", device)
+
+        @dbus.service.method(AGENT_IFACE, in_signature="ou")
+        def RequestConfirmation(self, device, passkey):
+            self._check("confirm", device)
+
+        @dbus.service.method(AGENT_IFACE, in_signature="os")
+        def AuthorizeService(self, device, uuid):
+            self._check("service", device)
+
+        @dbus.service.method(AGENT_IFACE, in_signature="o", out_signature="s")
+        def RequestPinCode(self, device):
+            raise Rejected("no PIN on this device")
+
+        @dbus.service.method(AGENT_IFACE, in_signature="o", out_signature="u")
+        def RequestPasskey(self, device):
+            raise Rejected("no passkey on this device")
+
+        @dbus.service.method(AGENT_IFACE, in_signature="ouq")
+        def DisplayPasskey(self, device, passkey, entered):
+            pass
+
+        @dbus.service.method(AGENT_IFACE, in_signature="os")
+        def DisplayPinCode(self, device, pincode):
+            pass
+
+        @dbus.service.method(AGENT_IFACE)
+        def Cancel(self):
+            pass
+
     class Advertisement(dbus.service.Object):
         def __init__(self, bus, name, on_release=None):
             self.path = APP_PATH + "/adv0"
@@ -619,20 +718,25 @@ def make_ble_server(state):
             self.app = Application(self.bus)
             svc = Service(self.bus, BLE_SERVICE_UUID)
             self.app.services.append(svc)
+            # info is readable before pairing (so the app can identify the camera);
+            # everything else needs an encrypted link -> the phone shows its pairing popup
             Characteristic(self.bus, 0, BLE_INFO_UUID, ["read"], svc, read_fn=state.info)
-            Characteristic(self.bus, 1, BLE_NETWORKS_UUID, ["read"], svc,
+            Characteristic(self.bus, 1, BLE_NETWORKS_UUID, ["encrypt-read"], svc,
                            read_fn=state.networks_payload)
-            Characteristic(self.bus, 2, BLE_CONNECT_UUID, ["write"], svc,
+            Characteristic(self.bus, 2, BLE_CONNECT_UUID, ["encrypt-write"], svc,
                            write_fn=state.submit_connect)
-            self.status_chr = Characteristic(self.bus, 3, BLE_STATUS_UUID, ["read", "notify"],
+            self.status_chr = Characteristic(self.bus, 3, BLE_STATUS_UUID,
+                                             ["encrypt-read", "notify"],
                                              svc, read_fn=state.status)
-            Characteristic(self.bus, 4, BLE_COMMAND_UUID, ["write"], svc,
+            Characteristic(self.bus, 4, BLE_COMMAND_UUID, ["encrypt-write"], svc,
                            write_fn=state.submit_command)
             self.adv = Advertisement(self.bus, state.ble_name,
                                      on_release=lambda: setattr(self, "advertising", False))
             self.advertising = False
             self.app_registered = False
             self.adapter_path = None
+            self.agent = Agent(self.bus, allow=lambda: self.advertising)
+            self.agent_registered = False
             state.on_status_change = lambda: GLib.idle_add(self._notify)
 
         def _notify(self):
@@ -694,8 +798,17 @@ def make_ble_server(state):
                 props.Set("org.bluez.Adapter1", "Powered", dbus.Boolean(True), **quiet)
                 props.Set("org.bluez.Adapter1", "Alias", dbus.String(state.ble_name), **quiet)
                 # LE data only: no classic pairing / discoverable -> no audio profiles
-                props.Set("org.bluez.Adapter1", "Pairable", dbus.Boolean(False), **quiet)
+                # LE pairing allowed while setup is on; never classic-discoverable
+                props.Set("org.bluez.Adapter1", "Pairable", dbus.Boolean(True), **quiet)
                 props.Set("org.bluez.Adapter1", "Discoverable", dbus.Boolean(False), **quiet)
+                if not self.agent_registered:
+                    self.agent_registered = True
+                    mgr = dbus.Interface(self.bus.get_object(BLUEZ, "/org/bluez"),
+                                         "org.bluez.AgentManager1")
+                    mgr.RegisterAgent(self.agent.path, "NoInputNoOutput",
+                                      reply_handler=lambda: mgr.RequestDefaultAgent(
+                                          self.agent.path, **quiet),
+                                      error_handler=self._agent_failed)
                 if not self.app_registered:
                     self.app_registered = True
                     dbus.Interface(obj, GATT_MGR).RegisterApplication(
@@ -710,6 +823,7 @@ def make_ble_server(state):
                                                        state.ble_name),
                         error_handler=self._adv_failed)
             else:
+                props.Set("org.bluez.Adapter1", "Pairable", dbus.Boolean(False), **quiet)
                 if self.advertising:
                     self.advertising = False
                     dbus.Interface(obj, ADV_MGR).UnregisterAdvertisement(
@@ -718,6 +832,11 @@ def make_ble_server(state):
                     self.app_registered = False
                     dbus.Interface(obj, GATT_MGR).UnregisterApplication(
                         dbus.ObjectPath(APP_PATH), **quiet)
+
+        def _agent_failed(self, e):
+            if "AlreadyExists" not in str(e):
+                log.error("Pairing agent register failed: %s", e)
+                self.agent_registered = False
 
         def _gatt_failed(self, e):
             log.error("GATT register failed: %s", e)
@@ -852,7 +971,7 @@ class WifiManager:
         self.net = net or Net(cfg["interface"])
         self.state = SetupState(cfg)
         self.ble = ble if ble is not None else make_ble_server(self.state)
-        self.bt_power = bt_power or bt_set_power
+        self.bt_power = bt_power or (lambda on: bt_set_power(on, cfg["le_only"]))
         self.api = ControlApi(self, cfg["control_port"])
         self.lock = threading.Lock()
         self.bt_lock = threading.Lock()   # API thread and loop both apply Bluetooth

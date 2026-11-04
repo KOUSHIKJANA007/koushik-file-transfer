@@ -29,6 +29,7 @@
 #   ./start_pi.sh bt-off      # Bluetooth off (frees it for GPIO / audio work)
 #   ./start_pi.sh bt-auto     # back to automatic: on only when setup is needed
 #   ./start_pi.sh bt-status   # Bluetooth state, as JSON
+#   ./start_pi.sh bt-forget   # remove all phones paired with the camera
 #   ./start_pi.sh logs-wifi
 #   ./start_pi.sh qr          # setup key + QR code for the camera sticker
 # ============================================================
@@ -166,6 +167,7 @@ start_filesender() {
     cd "$SENDER_DIR"
     # Kill any stale camera processes before starting
     pkill -f ffmpeg 2>/dev/null
+    pkill -f rpicam-vid 2>/dev/null   # a leftover one holds the Pi camera -> READY TIMEOUT
     pkill -f filesender 2>/dev/null
     sleep 1
     setsid python3 filesender.py > "$FILESENDER_LOG" 2>&1 &
@@ -226,6 +228,8 @@ stop_filesender() {
     if is_running "$FILESENDER_PID"; then
         kill $(cat "$FILESENDER_PID") 2>/dev/null
         rm -f "$FILESENDER_PID"
+        pkill -f rpicam-vid 2>/dev/null   # its camera pipeline, so the camera is free
+        pkill -f ffmpeg 2>/dev/null
         ok "filesender.py stopped"
     else
         info "filesender.py not running"
@@ -421,6 +425,15 @@ case "${1:-start}" in
             || fail "wifi-manager not reachable"
         ;;
 
+    bt-forget)
+        n=0
+        for mac in $( { bluetoothctl devices Paired 2>/dev/null || bluetoothctl paired-devices; } \
+                      | awk '/^Device/ {print $2}'); do
+            sudo bluetoothctl remove "$mac" >/dev/null && n=$((n + 1))
+        done
+        ok "Removed $n paired phone(s) — they will be asked to pair again next time"
+        ;;
+
     logs-wifi)
         tail -f "$WIFI_LOG"
         ;;
@@ -430,7 +443,7 @@ case "${1:-start}" in
         ;;
 
     *)
-        echo "Usage: $0 {start|stop|restart|status|logs|logs-file|logs-live|logs-relay|wifi|wifi-setup|bt-on|bt-off|bt-auto|bt-status|logs-wifi|qr}"
+        echo "Usage: $0 {start|stop|restart|status|logs|logs-file|logs-live|logs-relay|wifi|wifi-setup|bt-on|bt-off|bt-auto|bt-status|bt-forget|logs-wifi|qr}"
         exit 1
         ;;
 esac

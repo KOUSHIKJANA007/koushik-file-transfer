@@ -89,7 +89,7 @@ apt-get install -y qrencode >/dev/null 2>&1 && echo "   • qrencode installed" 
 apt_install network-manager || FAILED+=("network-manager")
 
 # Bluetooth setup (BLE): BlueZ + Python D-Bus bindings
-apt_install bluez python3-dbus python3-gi || FAILED+=("bluez/python3-dbus/python3-gi")
+apt_install bluez python3-dbus python3-gi python3-cryptography || FAILED+=("bluez/python3-dbus/python3-gi/python3-cryptography")
 systemctl enable --now bluetooth >/dev/null 2>&1 || true
 
 # ── 2. pigpio (start_pi.sh runs /usr/local/bin/pigpiod) ─────────────────────
@@ -215,7 +215,7 @@ for cmd in ffmpeg curl nmcli iw qrencode bluetoothctl rfkill; do
 done
 command -v rpicam-vid >/dev/null && ok "rpicam-vid" || info "rpicam-vid missing (only for camera type=1)"
 [ -x /usr/local/bin/pigpiod ] && ok "pigpiod" || fail "pigpiod missing"
-for mod in aiortc av cv2 numpy aiohttp requests dotenv dbus gi; do
+for mod in aiortc av cv2 numpy aiohttp requests dotenv dbus gi cryptography; do
     py_has "$mod" && ok "python: $mod" || fail "python: $mod missing"
 done
 py_has onvif && ok "python: onvif" || info "python: onvif missing (only for Imou PTZ)"

@@ -26,10 +26,10 @@ fi
 command -v iw >/dev/null || apt-get install -y iw || true
 
 # Bluetooth setup needs BlueZ + the Python D-Bus bindings
-apt-get install -y --no-install-recommends bluez python3-dbus python3-gi >/dev/null \
-    || { echo "❌ Could not install bluez python3-dbus python3-gi"; exit 1; }
+apt-get install -y --no-install-recommends bluez python3-dbus python3-gi python3-cryptography >/dev/null \
+    || { echo "❌ Could not install bluez python3-dbus python3-gi python3-cryptography"; exit 1; }
 systemctl enable --now bluetooth >/dev/null 2>&1 || true
-if ! python3 -c "import dbus, gi" 2>/dev/null; then
+if ! python3 -c "import dbus, gi, cryptography" 2>/dev/null; then
     echo "❌ python3 can't import dbus/gi — Bluetooth setup won't work"; exit 1
 fi
 
