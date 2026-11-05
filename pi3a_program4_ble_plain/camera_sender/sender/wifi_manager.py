@@ -854,6 +854,12 @@ class ControlApi:
             def log_message(self, fmt, *args):
                 log.debug("api: " + fmt, *args)
 
+            def handle(self):
+                try:
+                    super().handle()
+                except (BrokenPipeError, ConnectionResetError):
+                    pass                     # client gave up waiting — nothing to do
+
             def _json(self, code, obj):
                 data = json.dumps(obj).encode()
                 self.send_response(code)

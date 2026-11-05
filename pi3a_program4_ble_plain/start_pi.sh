@@ -415,9 +415,19 @@ case "${1:-start}" in
     bt-on|bt-off|bt-auto)
         state="${1#bt-}"
         api_call POST /api/bluetooth "{\"state\": \"$state\"}" >/dev/null \
-            && ok "Bluetooth mode: $state" \
+            && ok "Bluetooth mode: $state (switching...)" \
             || { fail "wifi-manager not reachable — is it installed and running?"; exit 1; }
+        want=""; [ "$state" = "on" ] && want=true; [ "$state" = "off" ] && want=false
+        for i in $(seq 1 25); do       # switching can take ~20 s while the chip is retried
+            sleep 1
+            [ -z "$want" ] && [ "$i" -ge 5 ] && break
+            [ -n "$want" ] && api_call GET /api/status | grep -q '"powered": '"$want" && break
+        done
         wifi_status
+        p=$(bluetoothctl show 2>/dev/null | grep -c "Powered: yes")
+        if [ "$state" = "on" ] && [ "$p" = "0" ]; then
+            fail "Bluetooth chip did not power on — see: tail -n 30 $WIFI_LOG"
+        fi
         ;;
 
     bt-status)
