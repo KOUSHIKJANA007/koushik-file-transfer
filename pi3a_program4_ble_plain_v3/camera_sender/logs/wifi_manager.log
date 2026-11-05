@@ -1,0 +1,210 @@
+2026-11-05 16:06:02,153 - wifi_manager - INFO - Interface=wlan0  BLE name='MTCam-UUID'  control API port=8085
+2026-11-05 16:06:02,517 - wifi_manager - INFO - BLE server ready (service 7d2a0001-5c3e-4b6a-9f1e-2a6c0d3e4b10)
+2026-11-05 16:06:02,527 - wifi_manager - INFO - 🌐 Control API on port 8085
+2026-11-05 16:06:02,531 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 16:06:02,532 - wifi_manager - INFO - Waiting up to 60s for a saved Wi-Fi…
+2026-11-05 16:06:02,773 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:06:02,775 - wifi_manager - INFO - ✅ Connected to 'Megh 300' (192.168.29.151)
+2026-11-05 16:06:30,744 - wifi_manager - INFO - Interface=wlan0  BLE name='MTCam-UUID'  control API port=8085
+2026-11-05 16:06:31,265 - wifi_manager - INFO - BLE server ready (service 7d2a0001-5c3e-4b6a-9f1e-2a6c0d3e4b10)
+2026-11-05 16:06:31,276 - wifi_manager - INFO - 🌐 Control API on port 8085
+2026-11-05 16:06:31,280 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 16:06:31,281 - wifi_manager - INFO - Waiting up to 60s for a saved Wi-Fi…
+2026-11-05 16:06:34,694 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:06:34,696 - wifi_manager - INFO - ✅ Connected to 'Megh 300' (192.168.29.151)
+2026-11-05 16:11:14,282 - wifi_manager - INFO - Interface=wlan0  BLE name='MTCam-UUID'  control API port=8085
+2026-11-05 16:11:14,641 - wifi_manager - INFO - BLE server ready (service 7d2a0001-5c3e-4b6a-9f1e-2a6c0d3e4b10)
+2026-11-05 16:11:14,651 - wifi_manager - INFO - 🌐 Control API on port 8085
+2026-11-05 16:11:14,656 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 16:11:14,657 - wifi_manager - INFO - Waiting up to 60s for a saved Wi-Fi…
+2026-11-05 16:11:14,901 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:11:14,902 - wifi_manager - INFO - ✅ Connected to 'Megh 300' (192.168.29.151)
+2026-11-05 16:13:02,693 - wifi_manager - INFO - Interface=wlan0  BLE name='MTCam-0042'  control API port=8085
+2026-11-05 16:13:03,052 - wifi_manager - INFO - BLE server ready (service 7d2a0001-5c3e-4b6a-9f1e-2a6c0d3e4b10)
+2026-11-05 16:13:03,061 - wifi_manager - INFO - 🌐 Control API on port 8085
+2026-11-05 16:13:03,066 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 16:13:03,067 - wifi_manager - INFO - Waiting up to 60s for a saved Wi-Fi…
+2026-11-05 16:13:03,307 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:13:03,308 - wifi_manager - INFO - ✅ Connected to 'Megh 300' (192.168.29.151)
+2026-11-05 16:13:42,457 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:13:42,457 - wifi_manager - INFO - Bluetooth → on (manual)
+2026-11-05 16:13:52,495 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power off
+2026-11-05 16:14:02,509 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bredr off
+2026-11-05 16:14:12,516 - wifi_manager - WARNING - Timeout: btmgmt --index 0 le on
+2026-11-05 16:14:14,857 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:14:22,530 - wifi_manager - WARNING - Timeout: btmgmt --index 0 sc on
+2026-11-05 16:14:32,536 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bondable on
+2026-11-05 16:14:42,550 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power on
+2026-11-05 16:14:42,633 - wifi_manager - INFO - 🔵 Bluetooth ON
+2026-11-05 16:14:43,704 - wifi_manager - INFO - BLE GATT service registered
+2026-11-05 16:14:43,724 - wifi_manager - INFO - 📡 BLE advertising as 'MTCam-0042'
+2026-11-05 16:15:26,582 - wifi_manager - INFO - Connecting to new network 'Megh 300_5G'…
+2026-11-05 16:15:52,249 - wifi_manager - INFO -   ✗ camwifi-Megh_300_5G: Hint: use 'journalctl -xe NM_CONNECTION=d7325ec3-0517-4a60-9d55-10a023f5249e + NM_DEVICE=wlan0' to get more details.
+2026-11-05 16:15:52,428 - wifi_manager - INFO - Wi-Fi disconnected
+2026-11-05 16:15:52,430 - wifi_manager - WARNING - ✗ Could not connect to “Megh 300_5G”. Check the password and that the network is 2.4 GHz and in range.
+2026-11-05 16:15:56,037 - wifi_manager - INFO - Trying saved network 'Megh 300' (signal 74%)…
+2026-11-05 16:15:59,798 - wifi_manager - INFO - ✅ Connected to 'Megh 300'
+2026-11-05 16:16:00,008 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:17:16,582 - wifi_manager - INFO - Connecting to new network 'Megh 300_5G'…
+2026-11-05 16:17:42,248 - wifi_manager - INFO -   ✗ camwifi-Megh_300_5G: Hint: use 'journalctl -xe NM_CONNECTION=da496282-0dfd-48a5-aec1-f97bd25f2a24 + NM_DEVICE=wlan0' to get more details.
+2026-11-05 16:17:42,428 - wifi_manager - INFO - Wi-Fi disconnected
+2026-11-05 16:17:42,430 - wifi_manager - WARNING - ✗ Could not connect to “Megh 300_5G”. Check the password and that the network is 2.4 GHz and in range.
+2026-11-05 16:17:45,698 - wifi_manager - INFO - Trying saved network 'Megh 300' (signal 75%)…
+2026-11-05 16:17:49,079 - wifi_manager - INFO - ✅ Connected to 'Megh 300'
+2026-11-05 16:17:49,297 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:21:28,486 - wifi_manager - INFO - Connecting to new network 'Megh 300_5G'…
+2026-11-05 16:21:54,246 - wifi_manager - INFO -   ✗ camwifi-Megh_300_5G: Hint: use 'journalctl -xe NM_CONNECTION=20832e77-650a-474b-80ca-8e2b5fa4031b + NM_DEVICE=wlan0' to get more details.
+2026-11-05 16:21:54,445 - wifi_manager - INFO - Wi-Fi disconnected
+2026-11-05 16:21:54,450 - wifi_manager - WARNING - ✗ Could not connect to “Megh 300_5G”. Check the password and that the network is 2.4 GHz and in range.
+2026-11-05 16:21:59,124 - wifi_manager - INFO - Trying saved network 'Megh 300' (signal 74%)…
+2026-11-05 16:22:03,169 - wifi_manager - INFO - ✅ Connected to 'Megh 300'
+2026-11-05 16:22:03,935 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:23:12,264 - wifi_manager - INFO - Connecting to new network 'Megh 300_5G'…
+2026-11-05 16:23:38,243 - wifi_manager - INFO -   ✗ camwifi-Megh_300_5G: Hint: use 'journalctl -xe NM_CONNECTION=77ae1b6a-58a3-4bc6-836a-b806e6160733 + NM_DEVICE=wlan0' to get more details.
+2026-11-05 16:23:38,435 - wifi_manager - INFO - Wi-Fi disconnected
+2026-11-05 16:23:38,439 - wifi_manager - WARNING - ✗ Could not connect to “Megh 300_5G”. Check the password and that the network is 2.4 GHz and in range.
+2026-11-05 16:23:41,867 - wifi_manager - INFO - Trying saved network 'Megh 300' (signal 64%)…
+2026-11-05 16:23:45,215 - wifi_manager - INFO - ✅ Connected to 'Megh 300'
+2026-11-05 16:23:45,485 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:26:09,343 - wifi_manager - INFO - Bluetooth mode set to 'off'
+2026-11-05 16:26:09,344 - wifi_manager - INFO - Bluetooth → off (manual)
+2026-11-05 16:26:12,656 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 16:26:18,456 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:26:18,457 - wifi_manager - INFO - Bluetooth → on (manual)
+2026-11-05 16:26:28,496 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power off
+2026-11-05 16:26:38,506 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bredr off
+2026-11-05 16:26:48,516 - wifi_manager - WARNING - Timeout: btmgmt --index 0 le on
+2026-11-05 16:26:58,526 - wifi_manager - WARNING - Timeout: btmgmt --index 0 sc on
+2026-11-05 16:27:08,536 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bondable on
+2026-11-05 16:27:18,546 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power on
+2026-11-05 16:27:20,647 - wifi_manager - INFO - 🔵 Bluetooth ON
+2026-11-05 16:27:21,720 - wifi_manager - INFO - BLE GATT service registered
+2026-11-05 16:27:23,751 - wifi_manager - ERROR - BLE advertise failed: org.bluez.Error.Failed: Failed to register advertisement
+2026-11-05 16:27:23,937 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:25:35,710 - wifi_manager - INFO - Interface=wlan0  BLE name='MTCam-0042'  control API port=8085
+2026-11-05 16:25:36,248 - wifi_manager - INFO - BLE server ready (service 7d2a0001-5c3e-4b6a-9f1e-2a6c0d3e4b10)
+2026-11-05 16:25:36,259 - wifi_manager - INFO - 🌐 Control API on port 8085
+2026-11-05 16:25:36,304 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 16:25:36,306 - wifi_manager - INFO - Waiting up to 60s for a saved Wi-Fi…
+2026-11-05 16:25:39,693 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:25:39,695 - wifi_manager - INFO - ✅ Connected to 'Megh 300' (192.168.29.151)
+2026-11-05 16:29:29,756 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:29:29,764 - wifi_manager - INFO - Bluetooth → on (manual)
+2026-11-05 16:29:39,876 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power off
+2026-11-05 16:29:49,896 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bredr off
+2026-11-05 16:29:50,101 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:29:59,906 - wifi_manager - WARNING - Timeout: btmgmt --index 0 le on
+2026-11-05 16:30:09,922 - wifi_manager - WARNING - Timeout: btmgmt --index 0 sc on
+2026-11-05 16:30:19,934 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bondable on
+2026-11-05 16:30:23,038 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:30:29,946 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power on
+2026-11-05 16:30:30,044 - wifi_manager - INFO - 🔵 Bluetooth ON
+2026-11-05 16:30:31,191 - wifi_manager - INFO - BLE GATT service registered
+2026-11-05 16:30:31,211 - wifi_manager - INFO - 📡 BLE advertising as 'MTCam-0042'
+2026-11-05 16:31:07,153 - wifi_manager - INFO - Connecting to new network 'Megh 300_5G'…
+2026-11-05 16:31:32,763 - wifi_manager - INFO -   ✗ camwifi-Megh_300_5G: Hint: use 'journalctl -xe NM_CONNECTION=1a03d1a4-a462-4d1c-ac36-637bfe5a5264 + NM_DEVICE=wlan0' to get more details.
+2026-11-05 16:31:32,966 - wifi_manager - INFO - Wi-Fi disconnected
+2026-11-05 16:31:32,969 - wifi_manager - WARNING - ✗ Could not connect to “Megh 300_5G”. Check the password and that the network is 2.4 GHz and in range.
+2026-11-05 16:31:36,468 - wifi_manager - INFO - Trying saved network 'Megh 300' (signal 80%)…
+2026-11-05 16:31:40,021 - wifi_manager - INFO - ✅ Connected to 'Megh 300'
+2026-11-05 16:31:40,331 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:34:52,382 - wifi_manager - INFO - Connecting to new network 'Megh 300'…
+2026-11-05 16:35:04,677 - wifi_manager - INFO -   ✗ camwifi-Megh_300: Hint: use 'journalctl -xe NM_CONNECTION=d789d1ac-5c45-43cf-b349-81b33457dbfa + NM_DEVICE=wlan0' to get more details.
+2026-11-05 16:35:04,880 - wifi_manager - INFO - Wi-Fi disconnected
+2026-11-05 16:35:04,882 - wifi_manager - WARNING - ✗ Could not connect to “Megh 300”. Check the password and that the network is 2.4 GHz and in range.
+2026-11-05 16:35:07,964 - wifi_manager - INFO - None of the saved networks are in range (Arijit, Banerjees, ModakWIFI)
+2026-11-05 16:36:23,442 - wifi_manager - INFO - Connecting to new network 'Megh 300'…
+2026-11-05 16:36:30,447 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:36:30,451 - wifi_manager - INFO - ✅ Connected to Megh 300 (192.168.29.151)
+2026-11-05 16:39:35,464 - wifi_manager - INFO - Bluetooth mode set to 'auto'
+2026-11-05 16:39:35,465 - wifi_manager - INFO - Bluetooth → off (default)
+2026-11-05 16:39:35,517 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 16:40:01,148 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:40:01,148 - wifi_manager - INFO - Bluetooth → on (manual)
+2026-11-05 16:40:11,187 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power off
+2026-11-05 16:40:21,196 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bredr off
+2026-11-05 16:40:31,206 - wifi_manager - WARNING - Timeout: btmgmt --index 0 le on
+2026-11-05 16:40:37,045 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:40:41,216 - wifi_manager - WARNING - Timeout: btmgmt --index 0 sc on
+2026-11-05 16:40:51,226 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bondable on
+2026-11-05 16:41:01,242 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power on
+2026-11-05 16:41:01,368 - wifi_manager - INFO - 🔵 Bluetooth ON
+2026-11-05 16:41:02,442 - wifi_manager - INFO - BLE GATT service registered
+2026-11-05 16:41:02,471 - wifi_manager - INFO - 📡 BLE advertising as 'MTCam-0042'
+2026-11-05 16:48:18,262 - wifi_manager - INFO - Interface=wlan0  BLE name='MTCam-0042'  control API port=8085
+2026-11-05 16:48:19,110 - wifi_manager - INFO - BLE server ready (service 7d2a0001-5c3e-4b6a-9f1e-2a6c0d3e4b10)
+2026-11-05 16:48:19,131 - wifi_manager - INFO - 🌐 Control API on port 8085
+2026-11-05 16:48:19,314 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 16:48:19,315 - wifi_manager - INFO - Waiting up to 60s for a saved Wi-Fi…
+2026-11-05 16:48:19,825 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 16:48:19,829 - wifi_manager - INFO - ✅ Connected to 'Megh 300' (192.168.29.151)
+2026-11-05 16:48:45,916 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:48:45,917 - wifi_manager - INFO - Bluetooth → on (manual)
+2026-11-05 16:48:55,937 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power off
+2026-11-05 16:49:05,949 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bredr off
+2026-11-05 16:49:15,962 - wifi_manager - WARNING - Timeout: btmgmt --index 0 le on
+2026-11-05 16:49:17,788 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 16:49:25,967 - wifi_manager - WARNING - Timeout: btmgmt --index 0 sc on
+2026-11-05 16:49:35,978 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bondable on
+2026-11-05 16:49:45,996 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power on
+2026-11-05 16:49:46,123 - wifi_manager - INFO - 🔵 Bluetooth ON
+2026-11-05 16:49:47,240 - wifi_manager - INFO - BLE GATT service registered
+2026-11-05 16:49:47,260 - wifi_manager - INFO - 📡 BLE advertising as 'MTCam-0042'
+2026-11-05 16:54:01,826 - wifi_manager - INFO - 🔐 Pairing accepted (just works) dev_5A_D5_7E_03_05_11
+2026-11-05 16:54:06,548 - wifi_manager - INFO - Connecting to new network 'megh 700 4g'…
+2026-11-05 16:54:18,579 - wifi_manager - INFO - ✅ Connected to megh 700 4g (192.168.29.151)
+2026-11-05 16:53:36,881 - wifi_manager - INFO - Interface=wlan0  BLE name='MTCam-0042'  control API port=8085
+2026-11-05 16:53:37,457 - wifi_manager - INFO - BLE server ready (service 7d2a0001-5c3e-4b6a-9f1e-2a6c0d3e4b10)
+2026-11-05 16:53:37,469 - wifi_manager - INFO - 🌐 Control API on port 8085
+2026-11-05 16:53:37,508 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 16:53:37,509 - wifi_manager - INFO - Waiting up to 60s for a saved Wi-Fi…
+2026-11-05 16:53:43,974 - wifi_manager - INFO - Wi-Fi connected to 'megh 700 4g'
+2026-11-05 16:53:43,976 - wifi_manager - INFO - ✅ Connected to 'megh 700 4g' (192.168.29.151)
+2026-11-05 17:03:20,119 - wifi_manager - INFO - Interface=wlan0  BLE name='MTCam-0042'  control API port=8085
+2026-11-05 17:03:20,644 - wifi_manager - INFO - BLE server ready (service 7d2a0001-5c3e-4b6a-9f1e-2a6c0d3e4b10)
+2026-11-05 17:03:20,655 - wifi_manager - INFO - 🌐 Control API on port 8085
+2026-11-05 17:03:20,660 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 17:03:20,661 - wifi_manager - INFO - Waiting up to 60s for a saved Wi-Fi…
+2026-11-05 17:03:24,068 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 17:03:24,070 - wifi_manager - INFO - ✅ Connected to 'Megh 300' (192.168.29.151)
+2026-11-05 17:06:11,041 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 17:06:11,041 - wifi_manager - INFO - Bluetooth → on (manual)
+2026-11-05 17:06:21,062 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power off
+2026-11-05 17:06:31,071 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bredr off
+2026-11-05 17:06:41,081 - wifi_manager - WARNING - Timeout: btmgmt --index 0 le on
+2026-11-05 17:06:43,825 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 17:06:51,091 - wifi_manager - WARNING - Timeout: btmgmt --index 0 sc on
+2026-11-05 17:07:01,101 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bondable on
+2026-11-05 17:07:11,115 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power on
+2026-11-05 17:07:11,190 - wifi_manager - INFO - 🔵 Bluetooth ON
+2026-11-05 17:07:12,263 - wifi_manager - INFO - BLE GATT service registered
+2026-11-05 17:07:12,282 - wifi_manager - INFO - 📡 BLE advertising as 'MTCam-0042'
+2026-11-05 17:14:48,334 - wifi_manager - INFO - Interface=wlan0  BLE name='MTCam-0042'  control API port=8085
+2026-11-05 17:14:48,894 - wifi_manager - INFO - BLE server ready (service 7d2a0001-5c3e-4b6a-9f1e-2a6c0d3e4b10)
+2026-11-05 17:14:48,905 - wifi_manager - INFO - 🌐 Control API on port 8085
+2026-11-05 17:14:48,944 - wifi_manager - INFO - 🔵 Bluetooth OFF
+2026-11-05 17:14:48,945 - wifi_manager - INFO - Waiting up to 60s for a saved Wi-Fi…
+2026-11-05 17:14:52,396 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'
+2026-11-05 17:14:52,398 - wifi_manager - INFO - ✅ Connected to 'Megh 300' (192.168.29.151)
+2026-11-05 17:16:46,973 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 17:16:46,974 - wifi_manager - INFO - Bluetooth → on (manual)
+2026-11-05 17:16:57,036 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power off
+2026-11-05 17:17:03,276 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 17:17:07,051 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bredr off
+2026-11-05 17:17:17,061 - wifi_manager - WARNING - Timeout: btmgmt --index 0 le on
+2026-11-05 17:17:27,070 - wifi_manager - WARNING - Timeout: btmgmt --index 0 sc on
+2026-11-05 17:17:35,185 - wifi_manager - INFO - Bluetooth mode set to 'on'
+2026-11-05 17:17:37,080 - wifi_manager - WARNING - Timeout: btmgmt --index 0 bondable on
+2026-11-05 17:17:47,090 - wifi_manager - WARNING - Timeout: btmgmt --index 0 power on
+2026-11-05 17:17:47,194 - wifi_manager - INFO - 🔵 Bluetooth ON
+2026-11-05 17:17:48,343 - wifi_manager - INFO - BLE GATT service registered
+2026-11-05 17:17:48,363 - wifi_manager - INFO - 📡 BLE advertising as 'MTCam-0042'
+2026-11-05 17:18:28,294 - wifi_manager - INFO - Connecting to new network 'megh 700 4g'…
+2026-11-05 17:18:43,795 - wifi_manager - INFO - ✅ Connected to megh 700 4g ()
+2026-11-05 17:23:07,069 - wifi_manager - INFO - Connecting to new network 'Megh 300_5G'…
+2026-11-05 17:23:33,047 - wifi_manager - INFO -   ✗ camwifi-Megh_300_5G: Hint: use 'journalctl -xe NM_CONNECTION=09b89f58-278d-47bb-a664-b593f3951b87 + NM_DEVICE=wlan0' to get more details.
+2026-11-05 17:23:33,365 - wifi_manager - INFO - Wi-Fi disconnected
+2026-11-05 17:23:33,366 - wifi_manager - WARNING - ✗ Could not connect to “Megh 300_5G”. Check the password and that the network is 2.4 GHz and in range.
+2026-11-05 17:23:36,919 - wifi_manager - INFO - Trying saved network 'Megh 300' (signal 70%)…
+2026-11-05 17:23:40,485 - wifi_manager - INFO - ✅ Connected to 'Megh 300'
+2026-11-05 17:23:40,802 - wifi_manager - INFO - Wi-Fi connected to 'Megh 300'

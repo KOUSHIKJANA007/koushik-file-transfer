@@ -713,12 +713,14 @@ def make_ble_server(state):
                                       reply_handler=lambda: mgr.RequestDefaultAgent(
                                           self.agent.path, **quiet),
                                       error_handler=self._agent_failed)
-                if not self.app_registered:
-                    self.app_registered = True
-                    dbus.Interface(obj, GATT_MGR).RegisterApplication(
-                        dbus.ObjectPath(APP_PATH), {},
-                        reply_handler=lambda: log.info("BLE GATT service registered"),
-                        error_handler=self._gatt_failed)
+                # The GATT service stays registered for the life of bluetoothd, so its
+                # handles never change (phones cache them; a change = GATT_INVALID_HANDLE).
+                # Registering again is harmless: "AlreadyExists" means it is still there.
+                self.app_registered = True
+                dbus.Interface(obj, GATT_MGR).RegisterApplication(
+                    dbus.ObjectPath(APP_PATH), {},
+                    reply_handler=lambda: log.info("BLE GATT service registered"),
+                    error_handler=self._gatt_failed)
                 if not self.advertising:
                     self.advertising = True
                     dbus.Interface(obj, ADV_MGR).RegisterAdvertisement(
@@ -732,10 +734,7 @@ def make_ble_server(state):
                     self.advertising = False
                     dbus.Interface(obj, ADV_MGR).UnregisterAdvertisement(
                         self.adv.get_path(), **quiet)
-                if self.app_registered:
-                    self.app_registered = False
-                    dbus.Interface(obj, GATT_MGR).UnregisterApplication(
-                        dbus.ObjectPath(APP_PATH), **quiet)
+                # GATT service intentionally kept registered (stable handles)
 
         def _agent_failed(self, e):
             if "AlreadyExists" not in str(e):
@@ -743,6 +742,8 @@ def make_ble_server(state):
                 self.agent_registered = False
 
         def _gatt_failed(self, e):
+            if "AlreadyExists" in str(e):
+                return                       # still registered — handles unchanged
             log.error("GATT register failed: %s", e)
             self.app_registered = False
 

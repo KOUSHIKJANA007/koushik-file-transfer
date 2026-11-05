@@ -1,0 +1,55 @@
+/home/medtrainai/.local/lib/python3.13/site-packages/google_crc32c/__init__.py:32: RuntimeWarning: As the c extension couldn't be imported, `google-crc32c` is using a pure python implementation that is significantly slower. If possible, please configure a c build environment and compile the extension
+  warnings.warn(_SLOW_CRC32C_WARNING, RuntimeWarning)
+2026-11-05 17:16:42,064 - __main__ - INFO - 🚀 LiveSenderNoTurn | id=550e8400-e29b-41d4-a716-000000000042 | relay=http://151.185.47.108:8090
+2026-11-05 17:16:42,065 - __main__ - INFO - 🔄 Retries automatically | relay down = normal
+2026-11-05 17:16:42,174 - __main__ - INFO - 🟢 Relay online | http://151.185.47.108:8090
+2026-11-05 17:16:42,175 - __main__ - INFO - 📡 Session 1 | http://151.185.47.108:8090 | id=550e8400-e29b-41d4-a716-000000000042
+2026-11-05 17:16:42,274 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-11-05 17:16:47,643 - __main__ - INFO - 📡 Offer posted — idle until a viewer asks for this camera
+2026-11-05 17:16:48,757 - __main__ - INFO - ✅ Relay answered — a viewer is waiting
+2026-11-05 17:16:49,779 - __main__ - INFO - 📺 Connected to relay — streaming video
+2026-11-05 17:16:53,788 - __main__ - WARNING - ⚡ Relay link lost (ICE: closed)
+2026-11-05 17:16:53,789 - __main__ - INFO - 📴 Session 1 ended (4s streamed)
+2026-11-05 17:16:58,890 - __main__ - INFO - 📡 Session 2 | http://151.185.47.108:8090 | id=550e8400-e29b-41d4-a716-000000000042
+2026-11-05 17:16:59,003 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-11-05 17:16:59,280 - __main__ - INFO - 📡 Offer posted — idle until a viewer asks for this camera
+2026-11-05 17:18:07,587 - __main__ - INFO - ⏳ Idle, offer posted (60s, renew in 240s)
+2026-11-05 17:18:30,934 - __main__ - INFO - 🔴 Relay went offline while waiting — restarting
+2026-11-05 17:18:30,937 - __main__ - INFO - ⏸  Relay unreachable | retrying every 30s
+2026-11-05 17:19:01,102 - __main__ - INFO - 🟢 Relay online | http://151.185.47.108:8090
+2026-11-05 17:19:01,105 - __main__ - INFO - 📡 Session 3 | http://151.185.47.108:8090 | id=550e8400-e29b-41d4-a716-000000000042
+2026-11-05 17:19:01,231 - __main__ - INFO - 🧹 Cleared 1 stale entries
+2026-11-05 17:19:01,466 - __main__ - INFO - 📡 Offer posted — idle until a viewer asks for this camera
+2026-11-05 17:19:13,552 - __main__ - INFO - ✅ Relay answered — a viewer is waiting
+2026-11-05 17:19:14,560 - __main__ - INFO - 📺 Connected to relay — streaming video
+2026-11-05 17:23:35,937 - __main__ - WARNING - ⚡ Relay link lost (ICE: closed)
+2026-11-05 17:23:35,939 - __main__ - INFO - 📴 Session 3 ended (240s streamed)
+2026-11-05 17:23:41,061 - __main__ - INFO - 📡 Session 4 | http://151.185.47.108:8090 | id=550e8400-e29b-41d4-a716-000000000042
+2026-11-05 17:23:41,148 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-11-05 17:23:41,330 - __main__ - INFO - 📡 Offer posted — idle until a viewer asks for this camera
+2026-11-05 17:24:01,323 - __main__ - INFO - ✅ Relay answered — a viewer is waiting
+2026-11-05 17:24:02,380 - __main__ - INFO - 📺 Connected to relay — streaming video
+2026-11-05 17:32:47,041 - __main__ - WARNING - ⚡ Relay link lost (ICE: closed)
+2026-11-05 17:32:47,043 - __main__ - INFO - 📴 Session 4 ended (499s streamed)
+2026-11-05 17:32:52,141 - __main__ - INFO - 📡 Session 5 | http://151.185.47.108:8090 | id=550e8400-e29b-41d4-a716-000000000042
+2026-11-05 17:32:52,226 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-11-05 17:32:52,381 - __main__ - INFO - 📡 Offer posted — idle until a viewer asks for this camera
+2026-11-05 17:34:02,532 - __main__ - INFO - ⏳ Idle, offer posted (60s, renew in 240s)
+2026-11-05 17:35:09,734 - __main__ - INFO - ⏳ Idle, offer posted (120s, renew in 180s)
+2026-11-05 17:36:16,238 - __main__ - INFO - ⏳ Idle, offer posted (180s, renew in 120s)
+2026-11-05 17:37:25,050 - __main__ - INFO - ⏳ Idle, offer posted (240s, renew in 60s)
+2026-11-05 17:38:32,823 - __main__ - INFO - ⏳ Idle, offer posted (300s, renew in 0s)
+2026-11-05 17:38:33,825 - __main__ - INFO - ⟳ No viewer for 300s — renewing offer
+2026-11-05 17:38:38,983 - __main__ - INFO - 📡 Session 6 | http://151.185.47.108:8090 | id=550e8400-e29b-41d4-a716-000000000042
+2026-11-05 17:38:39,149 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-11-05 17:38:39,446 - __main__ - INFO - 📡 Offer posted — idle until a viewer asks for this camera
+2026-11-05 17:39:46,734 - __main__ - INFO - ⏳ Idle, offer posted (60s, renew in 240s)
+2026-11-05 17:40:53,834 - __main__ - INFO - ⏳ Idle, offer posted (120s, renew in 180s)
+2026-11-05 17:41:59,935 - __main__ - INFO - ⏳ Idle, offer posted (180s, renew in 120s)
+2026-11-05 17:43:06,392 - __main__ - INFO - ⏳ Idle, offer posted (240s, renew in 60s)
+2026-11-05 17:44:13,396 - __main__ - INFO - ⏳ Idle, offer posted (300s, renew in 0s)
+2026-11-05 17:44:14,398 - __main__ - INFO - ⟳ No viewer for 300s — renewing offer
+2026-11-05 17:44:19,485 - __main__ - INFO - 📡 Session 7 | http://151.185.47.108:8090 | id=550e8400-e29b-41d4-a716-000000000042
+2026-11-05 17:44:19,571 - __main__ - INFO - 🧹 Cleared 0 stale entries
+2026-11-05 17:44:19,710 - __main__ - INFO - 📡 Offer posted — idle until a viewer asks for this camera
+2026-11-05 17:45:25,985 - __main__ - INFO - ⏳ Idle, offer posted (60s, renew in 240s)
