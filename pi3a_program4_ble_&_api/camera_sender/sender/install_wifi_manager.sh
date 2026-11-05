@@ -26,16 +26,45 @@ fi
 command -v iw >/dev/null || apt-get install -y iw || true
 
 # Bluetooth setup needs BlueZ + the Python D-Bus bindings
-apt-get install -y --no-install-recommends bluez python3-dbus python3-gi python3-cryptography >/dev/null \
-    || { echo "❌ Could not install bluez python3-dbus python3-gi python3-cryptography"; exit 1; }
+apt-get install -y --no-install-recommends bluez python3-dbus python3-gi >/dev/null \
+    || { echo "❌ Could not install bluez python3-dbus python3-gi"; exit 1; }
 systemctl enable --now bluetooth >/dev/null 2>&1 || true
-if ! python3 -c "import dbus, gi, cryptography" 2>/dev/null; then
+if ! python3 -c "import dbus, gi" 2>/dev/null; then
     echo "❌ python3 can't import dbus/gi — Bluetooth setup won't work"; exit 1
 fi
 
 mkdir -p "$LOG_DIR"
-sed -e "s#__SENDER_DIR__#$SENDER_DIR#g" -e "s#__LOG_DIR__#$LOG_DIR#g" \
-    "$SENDER_DIR/wifi-manager.service" > /etc/systemd/system/wifi-manager.service
+# A "masked" unit is a link to /dev/null: unmask first, or nothing below takes effect
+systemctl unmask wifi-manager.service >/dev/null 2>&1 || true
+rm -f /etc/systemd/system/wifi-manager.service
+
+# Service definition written here, so no template file is needed
+cat > /etc/systemd/system/wifi-manager.service <<UNIT
+[Unit]
+Description=Camera Wi-Fi manager (auto-connect, Bluetooth setup)
+After=NetworkManager.service bluetooth.service
+Wants=NetworkManager.service bluetooth.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 $SENDER_DIR/wifi_manager.py --config $SENDER_DIR/camera.ini
+Restart=always
+RestartSec=5
+StandardOutput=append:$LOG_DIR/wifi_manager.log
+StandardError=append:$LOG_DIR/wifi_manager.log
+
+[Install]
+WantedBy=multi-user.target
+UNIT
+
+if [ ! -f "$SENDER_DIR/camera.ini" ]; then
+    if [ -f "$SENDER_DIR/camera.ini.example" ]; then
+        cp "$SENDER_DIR/camera.ini.example" "$SENDER_DIR/camera.ini"
+        echo "ℹ  Created camera.ini from the template — set type and camera_uuid"
+    else
+        echo "❌ $SENDER_DIR/camera.ini not found"; exit 1
+    fi
+fi
 chmod +x "$SENDER_DIR/wifi_manager.py"
 systemctl daemon-reload
 systemctl enable wifi-manager.service

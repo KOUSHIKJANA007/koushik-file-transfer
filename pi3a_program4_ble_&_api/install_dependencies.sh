@@ -3,7 +3,7 @@
 # install_dependencies.sh — one-time setup for a new camera Pi
 # ============================================================
 # Installs everything camera_sender needs:
-#   • system tools : ffmpeg, rpicam-apps, v4l-utils, curl, pigpio, qrencode, bluez,
+#   • system tools : ffmpeg, rpicam-apps, v4l-utils, curl, pigpio, bluez,
 #                    NetworkManager, iw, rfkill
 #   • python libs  : aiortc, av, opencv, numpy, aiohttp, requests,
 #                    python-dotenv, onvif-zeep
@@ -80,16 +80,11 @@ if ! command -v rpicam-vid >/dev/null && command -v libcamera-vid >/dev/null; th
     info "Linked libcamera-vid → rpicam-vid"
 fi
 
-# qrencode — makes the camera's setup QR sticker (./start_pi.sh qr)
-info "Installing qrencode (QR sticker)..."
-apt-get install -y qrencode >/dev/null 2>&1 && echo "   • qrencode installed" \
-    || { echo "   • qrencode failed"; FAILED+=("qrencode"); }
-
 # NetworkManager (for wifi-manager)
 apt_install network-manager || FAILED+=("network-manager")
 
 # Bluetooth setup (BLE): BlueZ + Python D-Bus bindings
-apt_install bluez python3-dbus python3-gi python3-cryptography || FAILED+=("bluez/python3-dbus/python3-gi/python3-cryptography")
+apt_install bluez python3-dbus python3-gi || FAILED+=("bluez/python3-dbus/python3-gi")
 systemctl enable --now bluetooth >/dev/null 2>&1 || true
 
 # ── 2. pigpio (start_pi.sh runs /usr/local/bin/pigpiod) ─────────────────────
@@ -210,12 +205,12 @@ fi
 
 # ── 6. Verify ───────────────────────────────────────────────────────────────
 step "6/6  Check"
-for cmd in ffmpeg curl nmcli iw qrencode bluetoothctl rfkill; do
+for cmd in ffmpeg curl nmcli iw bluetoothctl rfkill; do
     command -v "$cmd" >/dev/null && ok "$cmd" || fail "$cmd missing"
 done
 command -v rpicam-vid >/dev/null && ok "rpicam-vid" || info "rpicam-vid missing (only for camera type=1)"
 [ -x /usr/local/bin/pigpiod ] && ok "pigpiod" || fail "pigpiod missing"
-for mod in aiortc av cv2 numpy aiohttp requests dotenv dbus gi cryptography; do
+for mod in aiortc av cv2 numpy aiohttp requests dotenv dbus gi; do
     py_has "$mod" && ok "python: $mod" || fail "python: $mod missing"
 done
 py_has onvif && ok "python: onvif" || info "python: onvif missing (only for Imou PTZ)"

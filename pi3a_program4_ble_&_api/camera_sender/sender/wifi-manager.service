@@ -1,7 +1,7 @@
 [Unit]
-Description=Camera Wi-Fi manager (auto-connect, hotspot setup fallback)
-After=NetworkManager.service
-Wants=NetworkManager.service
+Description=Camera Wi-Fi manager (auto-connect, Bluetooth setup)
+After=NetworkManager.service bluetooth.service
+Wants=NetworkManager.service bluetooth.service
 
 [Service]
 Type=simple
