@@ -3,7 +3,7 @@
 # install_dependencies.sh — one-time setup for a new camera Pi
 # ============================================================
 # Installs everything camera_sender needs:
-#   • system tools : ffmpeg, rpicam-apps, v4l-utils, curl, pigpio, qrencode, bluez,
+#   • system tools : ffmpeg, rpicam-apps, v4l-utils, curl, pigpio, bluez,
 #                    NetworkManager, iw, rfkill
 #   • python libs  : aiortc, av, opencv, numpy, aiohttp, requests,
 #                    python-dotenv, onvif-zeep
@@ -79,11 +79,6 @@ if ! command -v rpicam-vid >/dev/null && command -v libcamera-vid >/dev/null; th
     ln -sf "$(command -v libcamera-vid)" /usr/local/bin/rpicam-vid
     info "Linked libcamera-vid → rpicam-vid"
 fi
-
-# qrencode — makes the camera's setup QR sticker (./start_pi.sh qr)
-info "Installing qrencode (QR sticker)..."
-apt-get install -y qrencode >/dev/null 2>&1 && echo "   • qrencode installed" \
-    || { echo "   • qrencode failed"; FAILED+=("qrencode"); }
 
 # NetworkManager (for wifi-manager)
 apt_install network-manager || FAILED+=("network-manager")
@@ -210,7 +205,7 @@ fi
 
 # ── 6. Verify ───────────────────────────────────────────────────────────────
 step "6/6  Check"
-for cmd in ffmpeg curl nmcli iw qrencode bluetoothctl rfkill; do
+for cmd in ffmpeg curl nmcli iw bluetoothctl rfkill; do
     command -v "$cmd" >/dev/null && ok "$cmd" || fail "$cmd missing"
 done
 command -v rpicam-vid >/dev/null && ok "rpicam-vid" || info "rpicam-vid missing (only for camera type=1)"

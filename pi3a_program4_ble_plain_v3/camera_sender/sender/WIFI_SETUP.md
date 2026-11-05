@@ -8,7 +8,7 @@ again, so it stays out of the way of GPIO and audio work.
 
 The phone pairs with the camera over BLE (a system popup: "Pair with
 MTCam-0042?"), so the link is encrypted. The app then sends the Wi-Fi name and
-password as plain JSON, together with the key from the QR sticker. The Pi
+password as plain JSON. The Pi
 runs Bluetooth **Low Energy only** — classic Bluetooth, where phone audio lives,
 is switched off — so pairing can never move the Pi's audio over to the phone.
 
@@ -18,7 +18,6 @@ found by apps (the Flutter app, or nRF Connect for testing).
 ## Install / update (once per camera)
 
     sudo ~/install_dependencies.sh        # installs bluez, python3-dbus, python3-gi too
-    ./start_pi.sh qr                       # print the new QR sticker (format changed: v2)
 
 `camera.ini` is no longer in the zip. The zip ships `camera.ini.example`; the
 camera's own `camera.ini` is created from it only if missing and is never
@@ -49,15 +48,7 @@ The manual mode is not kept across a reboot (it starts as `auto`).
     ./start_pi.sh bt-status    # full status as JSON
     ./start_pi.sh bt-forget    # remove all phones paired with the camera
     ./start_pi.sh wifi-setup   # Bluetooth setup mode for 10 min
-    ./start_pi.sh qr           # QR sticker
     ./start_pi.sh logs-wifi
-
-## QR sticker (v2)
-
-    {"v":2,"uuid":"<camera_uuid>","ble":"MTCam-0042","key":"<setup key>"}
-
-`key` is created once per camera in `/etc/wifi_manager/setup_key` (an existing
-hotspot password is reused, so the secret on old stickers stays the same).
 
 ## BLE service (for the Flutter app)
 
@@ -80,24 +71,22 @@ Pairing is accepted only while setup mode is on.
 
 ### connect — what the app writes
 
-    {"ssid":"Megh 300","password":"yourWifiPassword","key":"<key from the QR sticker>","hidden":false}
+    {"ssid":"Megh 300","password":"yourWifiPassword","hidden":false}
 
 - `ssid` required, 1–32 bytes
 - `password` empty or left out for an open network, otherwise 8–63 characters
-- `key` the camera's setup key (`./start_pi.sh qr` shows it)
 - `hidden` optional, default `false`
 
-(Payload encryption will be added in a later step.)
+(No key yet: any phone that pairs while setup is on can set the Wi-Fi. A key and
+payload encryption will be added in a later step.)
 
-A refused write returns a GATT error: `org.bluez.Error.NotAuthorized` for a wrong
-key; `org.bluez.Error.Failed` with the reason for bad input (SSID 1–32 bytes;
-password empty for an open network, else 8–63 characters; `already connecting`). After 5 wrong keys, setup
-writes are ignored for 60 s.
+A refused write returns `org.bluez.Error.Failed` with the reason: `ssid must be
+1-32 bytes`, `password must be 8-63 characters`, `already connecting`,
+`body must be a JSON object` or `value too long` (over 1024 bytes).
 
 ### App flow
-1. Scan the QR code → `uuid`, `ble`, `key`.
-2. Scan for BLE devices advertising the service UUID; connect; read **info**; check
-   `camera_uuid` matches the QR (otherwise try the next device).
+1. Scan for BLE devices advertising the service UUID (or named `MTCam-…`); connect.
+2. Read **info** to see which camera it is (`camera_uuid`).
 3. Subscribe to **status** notifications → the phone shows the pairing popup → user taps Pair.
 4. Android: request MTU 512. Read **networks**; the user picks one and types the password.
 5. Write **connect**. Wait for a **status** notification with
@@ -112,7 +101,7 @@ clears all pairings.
 ## Local control API (home network)
 
 `http://<camera-ip>:8085` — the camera's IP is in `./start_pi.sh wifi`.
-Header `X-Api-Key: <setup key>` is required, except from the Pi itself.
+No key needed.
 
 | Method | Path | Body | Reply |
 |---|---|---|---|
@@ -120,7 +109,7 @@ Header `X-Api-Key: <setup key>` is required, except from the Pi itself.
 | POST | `/api/bluetooth` | `{"state":"on"}` / `"off"` / `"auto"` | `200` + status |
 | POST | `/api/setup-mode` | `{"minutes":10}` (1–60) | `200` + status |
 
-Errors: `400 {"error":…}` bad body or value, `401` missing/wrong key, `404` unknown path.
+Errors: `400 {"error":…}` bad body or value, `404` unknown path.
 
 ## EC2 contract (unchanged)
 - `GET /camera/mode/<uuid>` may include `"wifi_setup": true` → camera calls

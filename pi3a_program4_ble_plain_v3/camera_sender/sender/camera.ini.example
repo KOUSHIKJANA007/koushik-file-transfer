@@ -70,10 +70,6 @@ ptz_poll_sec   = 0.5
 interface              = wlan0
 # BLE name the app sees; {id} = last 4 characters of camera_uuid
 ble_name               = MTCam-{id}
-# Key the app must send with setup requests (from the QR sticker).
-#   auto = random key generated once per camera (kept in /etc/wifi_manager)
-#   show it + QR sticker:  ./start_pi.sh qr
-setup_key              = auto
 # yes = Bluetooth Low Energy only (classic Bluetooth / audio profiles switched off)
 le_only                = yes
 # Bluetooth when Wi-Fi is fine and nothing asked for it: off | on
