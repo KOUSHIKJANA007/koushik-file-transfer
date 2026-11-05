@@ -31,6 +31,7 @@
 #   ./start_pi.sh bt-status   # Bluetooth state, as JSON
 #   ./start_pi.sh bt-forget   # remove all phones paired with the camera
 #   ./start_pi.sh logs-wifi
+#   ./start_pi.sh qr          # setup key + QR code for the camera sticker
 # ============================================================
 
 # Resolve paths from this script's own location (works with or without sudo)
@@ -65,7 +66,7 @@ EC2_RELAY="http://151.185.47.108:8090"
 # Only the real "camera_uuid = ..." line (ignore comments / other mentions)
 CAMERA_ID=$(grep -E '^[[:space:]]*camera_uuid[[:space:]]*=' "$SENDER_DIR/camera.ini" | head -1 | sed 's/.*= *//' | tr -d ' \r')
 mkdir -p "$LOG_DIR"
-if [ "$CAMERA_ID" = "SET-THIS-CAMERA-UUID" ]; then
+if [ "$CAMERA_ID" = "SET-THIS-CAMERA-UUID" ] && [ "${1:-start}" != "qr" ]; then
     echo "❌ Set camera_uuid in $SENDER_DIR/camera.ini first (it is still the template value)"
     exit 1
 fi
@@ -437,8 +438,12 @@ case "${1:-start}" in
         tail -f "$WIFI_LOG"
         ;;
 
+    qr)
+        sudo python3 "$SENDER_DIR/wifi_manager.py" --config "$SENDER_DIR/camera.ini" --qr
+        ;;
+
     *)
-        echo "Usage: $0 {start|stop|restart|status|logs|logs-file|logs-live|logs-relay|wifi|wifi-setup|bt-on|bt-off|bt-auto|bt-status|bt-forget|logs-wifi}"
+        echo "Usage: $0 {start|stop|restart|status|logs|logs-file|logs-live|logs-relay|wifi|wifi-setup|bt-on|bt-off|bt-auto|bt-status|bt-forget|logs-wifi|qr}"
         exit 1
         ;;
 esac

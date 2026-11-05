@@ -7,11 +7,12 @@ Behaviour
 1. On boot, give NetworkManager `boot_wait_sec` to join any SAVED Wi-Fi.
 2. If nothing joined, scan and try every saved network in range (strongest first).
 3. Still not connected -> SETUP MODE: Bluetooth is switched on and the camera
-   advertises a BLE service ("MTCam-0042"). The phone pairs with it (system
-   popup "Pair with MTCam-0042?", "Just Works" — no PIN), which encrypts the
-   link; then the app reads the Wi-Fi list, writes {"ssid","password"} and gets
-   the result as a BLE notification. The controller runs in LE-only mode, so no
-   classic Bluetooth audio profile can ever be used.
+   advertises a BLE service ("MTCam-0042"). The Flutter app connects over BLE;
+   the phone shows its pairing popup ("Pair with MTCam-0042?"), after which the
+   link is encrypted. The app reads the Wi-Fi list, writes the network as plain
+   JSON {"ssid","password","key"} and receives the result as a BLE notification.
+   The controller runs in
+   LE-only mode, so no classic Bluetooth audio profile can ever be used.
 4. Once the camera has Wi-Fi, Bluetooth is switched OFF again (after
    `bt_off_after_setup_sec`), so it stays out of the way of GPIO / audio work.
 5. Wi-Fi lost for longer than `lost_grace_sec` -> saved networks are retried,
@@ -30,6 +31,8 @@ Setup mode on demand:  touch /run/wifi_manager/force_ap  (start_pi.sh wifi-setup
 the local API, or the EC2 "wifi_setup" flag via filesender.py) -> BLE for 10 min,
 while the current Wi-Fi keeps working.
 
+QR sticker payload:  sudo python3 wifi_manager.py --qr
+
 Requirements: Raspberry Pi OS Bookworm (NetworkManager / nmcli, BlueZ),
 python3-dbus, python3-gi; run as root.
 """
@@ -41,7 +44,9 @@ import logging
 import os
 import queue
 import re
+import secrets
 import shutil
+import string
 import subprocess
 import sys
 import threading
@@ -52,6 +57,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 DEFAULTS = {
     "interface": "wlan0",
     "ble_name": "MTCam-{id}",
+    "setup_key": "auto",                 # auto = random per camera, kept in SECRET_FILE
     "boot_wait_sec": "60",
     "lost_grace_sec": "120",
     "retry_known_sec": "180",
@@ -67,6 +73,9 @@ RUN_DIR = "/run/wifi_manager"
 FORCE_AP_FLAG = os.path.join(RUN_DIR, "force_ap")     # name kept for filesender.py
 STATE_FILE = os.path.join(RUN_DIR, "state.json")
 DNSMASQ_CAPTIVE_CONF = "/etc/NetworkManager/dnsmasq-shared.d/camsetup-captive.conf"
+SECRET_DIR = "/etc/wifi_manager"          # outside the project, survives zip updates
+SECRET_FILE = os.path.join(SECRET_DIR, "setup_key")
+OLD_SECRET_FILE = os.path.join(SECRET_DIR, "hotspot_password")
 FORCED_SETUP_SEC = 600
 API_VERSION = 2
 
@@ -100,12 +109,40 @@ def load_config(path):
     w["camera_uuid"] = cam_uuid
     w["ble_name"] = w["ble_name"].replace("{id}", short_id)[:20]
 
+    if w["setup_key"].lower() == "auto" or len(w["setup_key"]) < 8:
+        w["setup_key"] = load_or_create_secret()
+
     for k in ("boot_wait_sec", "lost_grace_sec", "retry_known_sec",
               "bt_off_after_setup_sec", "control_port"):
         w[k] = int(w[k])
     w["bluetooth_default"] = "on" if w["bluetooth_default"].lower() == "on" else "off"
     w["le_only"] = w["le_only"].lower() not in ("no", "0", "false", "off")
     return w
+
+
+def load_or_create_secret():
+    """Random 10-char setup key, generated once per camera and kept forever."""
+    for path in (SECRET_FILE, OLD_SECRET_FILE):   # reuse the old hotspot password if present
+        try:
+            with open(path) as f:
+                key = f.read().strip()
+            if 8 <= len(key) <= 63:
+                return key
+        except OSError:
+            pass
+    alphabet = "".join(c for c in string.ascii_letters + string.digits if c not in "0O1lI")
+    key = "".join(secrets.choice(alphabet) for _ in range(10))
+    os.makedirs(SECRET_DIR, mode=0o700, exist_ok=True)
+    with open(os.open(SECRET_FILE, os.O_WRONLY | os.O_CREAT | os.O_TRUNC, 0o600), "w") as f:
+        f.write(key + "\n")
+    log.info("Generated a new setup key (stored in %s)", SECRET_FILE)
+    return key
+
+
+def qr_payload(cfg):
+    """What to print as the QR sticker. The Flutter app parses this JSON."""
+    return json.dumps({"v": API_VERSION, "uuid": cfg["camera_uuid"], "ble": cfg["ble_name"],
+                       "key": cfg["setup_key"]}, separators=(",", ":"))
 
 
 # ════════════════════════════════════════════════════════════════════════════
@@ -276,6 +313,7 @@ class SetupState:
     def __init__(self, cfg):
         self.camera_uuid = cfg["camera_uuid"]
         self.ble_name = cfg["ble_name"]
+        self.setup_key = cfg["setup_key"]
         self.lock = threading.Lock()
         self.networks = []
         self.scanned_at = 0
@@ -291,6 +329,26 @@ class SetupState:
         self.ble_clients = 0
         self.requests = queue.Queue()    # ("connect", ssid, pw, hidden) | ("rescan",)
         self.on_status_change = None     # set by the BLE server -> notify subscribers
+        self.bad_keys = 0
+        self.locked_until = 0
+
+    # wrong-key throttle: 5 wrong keys -> ignore setup writes for 60 s
+    def check_key(self, key):
+        return self._auth_result(secrets.compare_digest(str(key or ""), self.setup_key))
+
+    def _auth_result(self, ok):
+        now = time.time()
+        if now < self.locked_until:
+            return False
+        if ok:
+            self.bad_keys = 0
+            return True
+        self.bad_keys += 1
+        if self.bad_keys >= 5:
+            self.bad_keys = 0
+            self.locked_until = now + 60
+            log.warning("5 wrong setup keys — ignoring setup requests for 60 s")
+        return False
 
     def info(self):
         return {"camera_uuid": self.camera_uuid, "name": self.ble_name,
@@ -329,6 +387,8 @@ class SetupState:
         ssid = str(body.get("ssid") or "").strip()
         if not ssid or len(ssid.encode("utf-8")) > 32:
             return "ssid must be 1-32 bytes"
+        if not self.check_key(body.get("key")):    # plain key in the JSON
+            return "invalid setup key"
         password = str(body.get("password") or "")
         if password and not (8 <= len(password) <= 63):
             return "password must be 8-63 characters"
@@ -339,6 +399,7 @@ class SetupState:
         return None
 
     def submit_command(self, body):
+        # rescan is harmless and the link is already paired + encrypted: no key needed
         if not isinstance(body, dict):
             return "body must be a JSON object"
         if body.get("cmd") == "rescan":
@@ -355,7 +416,7 @@ def bt_set_power(on, le_only=True):
     run(["rfkill", "unblock" if on else "block", "bluetooth"])
     if on:
         if le_only and shutil.which("btmgmt"):
-            # LE only (no classic BR/EDR -> no audio profiles), pairing allowed
+            # LE only (no classic BR/EDR -> no audio profiles), Secure Connections, bonding
             for args in (["power", "off"], ["bredr", "off"], ["le", "on"], ["sc", "on"],
                          ["bondable", "on"], ["power", "on"]):
                 run(["btmgmt", "--index", "0"] + args, timeout=10)
@@ -376,13 +437,13 @@ def bt_is_powered():
 # ════════════════════════════════════════════════════════════════════════════
 #
 #  Service 7d2a0001-…  advertised as e.g. "MTCam-0042"
-#    info      (read)                    {"camera_uuid","name","api_version","wifi":{connected,ssid}}
-#    networks  (paired read)             {"networks":[{"ssid","signal","security"}],"scanned_at"}
-#    connect   (paired write)            {"ssid","password","hidden"}
-#    status    (paired read, notify)     {"state","last_ssid","last_error","wifi_connected","wifi_ssid","ip"}
-#    command   (paired write)            {"cmd":"rescan"}
+#    info      (read)          {"camera_uuid","name","api_version","wifi":{connected,ssid}}
+#    networks  (read)          {"networks":[{"ssid","signal","security"}],"scanned_at"}
+#    connect   (write)         {"ssid","password","hidden","key"}
+#    status    (read, notify)  {"state","last_ssid","last_error","wifi_connected","wifi_ssid","ip"}
+#    command   (write)         {"cmd":"rescan","key"}
 #  All values are UTF-8 JSON. Long reads use offsets; ask for MTU 512 on Android.
-#  A bad write is refused with org.bluez.Error.Failed + the reason.
+#  A bad write is refused with org.bluez.Error.Failed / NotAuthorized + the reason.
 
 class NullBle:
     """Used when BlueZ / python3-dbus are missing: logs instead of advertising."""
@@ -422,6 +483,9 @@ def make_ble_server(state):
 
     class Failed(dbus.exceptions.DBusException):
         _dbus_error_name = "org.bluez.Error.Failed"
+
+    class NotAuthorized(dbus.exceptions.DBusException):
+        _dbus_error_name = "org.bluez.Error.NotAuthorized"
 
     class InvalidArgs(dbus.exceptions.DBusException):
         _dbus_error_name = "org.freedesktop.DBus.Error.InvalidArgs"
@@ -512,6 +576,8 @@ def make_ble_server(state):
                 return          # part of a long write — wait for the rest
             self.buf = bytearray()
             err = self.write_fn(body)
+            if err == "invalid setup key":
+                raise NotAuthorized(err)
             if err:
                 raise Failed(err)
 
@@ -537,7 +603,8 @@ def make_ble_server(state):
         _dbus_error_name = "org.bluez.Error.Rejected"
 
     class Agent(dbus.service.Object):
-        """NoInputNoOutput agent: accepts "Just Works" pairing while setup is on."""
+        """NoInputNoOutput agent: accepts "Just Works" LE pairing while setup is on.
+        Who may configure Wi-Fi is decided by the QR key, not by the pairing."""
         def __init__(self, bus, allow):
             self.path = APP_PATH + "/agent"
             self.allow = allow
@@ -547,7 +614,7 @@ def make_ble_server(state):
             if not self.allow():
                 log.info("Pairing refused (%s) — setup is not active", what)
                 raise Rejected("setup not active")
-            log.info("🔐 Paired (%s) %s", what, str(device).split("/")[-1])
+            log.info("🔐 Pairing accepted (%s) %s", what, str(device).split("/")[-1])
 
         @dbus.service.method(AGENT_IFACE)
         def Release(self):
@@ -619,17 +686,17 @@ def make_ble_server(state):
             self.app = Application(self.bus)
             svc = Service(self.bus, BLE_SERVICE_UUID)
             self.app.services.append(svc)
-            # info is readable before pairing; the rest needs a paired (encrypted)
-            # link, so the phone shows its pairing popup on first access
-            rd, wr = ["encrypt-read"], ["encrypt-write"]
+            # info is readable before pairing (so the app can identify the camera);
+            # everything else needs an encrypted link -> the phone shows its pairing popup
             Characteristic(self.bus, 0, BLE_INFO_UUID, ["read"], svc, read_fn=state.info)
-            Characteristic(self.bus, 1, BLE_NETWORKS_UUID, rd, svc,
+            Characteristic(self.bus, 1, BLE_NETWORKS_UUID, ["encrypt-read"], svc,
                            read_fn=state.networks_payload)
-            Characteristic(self.bus, 2, BLE_CONNECT_UUID, wr, svc,
+            Characteristic(self.bus, 2, BLE_CONNECT_UUID, ["encrypt-write"], svc,
                            write_fn=state.submit_connect)
-            self.status_chr = Characteristic(self.bus, 3, BLE_STATUS_UUID, rd + ["notify"],
+            self.status_chr = Characteristic(self.bus, 3, BLE_STATUS_UUID,
+                                             ["encrypt-read", "notify"],
                                              svc, read_fn=state.status)
-            Characteristic(self.bus, 4, BLE_COMMAND_UUID, wr, svc,
+            Characteristic(self.bus, 4, BLE_COMMAND_UUID, ["encrypt-write"], svc,
                            write_fn=state.submit_command)
             self.adv = Advertisement(self.bus, state.ble_name,
                                      on_release=lambda: setattr(self, "advertising", False))
@@ -771,6 +838,7 @@ def make_ble_server(state):
 #   GET  /api/status        -> wifi, bluetooth, setup state
 #   POST /api/bluetooth     <- {"state": "on" | "off" | "auto"}
 #   POST /api/setup-mode    <- {"minutes": 10}            (1-60)
+#   Header  X-Api-Key: <setup key>   (not needed from the Pi itself, 127.0.0.1)
 
 class ControlApi:
     def __init__(self, manager, port):
@@ -795,6 +863,12 @@ class ControlApi:
                 self.end_headers()
                 self.wfile.write(data)
 
+            def _authorized(self):
+                if self.client_address[0] in ("127.0.0.1", "::1"):
+                    return True
+                return secrets.compare_digest(self.headers.get("X-Api-Key") or "",
+                                              mgr.state.setup_key)
+
             def _body(self):
                 length = min(int(self.headers.get("Content-Length") or 0), 4096)
                 body = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
@@ -803,11 +877,15 @@ class ControlApi:
                 return body
 
             def do_GET(self):
+                if not self._authorized():
+                    return self._json(401, {"error": "missing or wrong X-Api-Key"})
                 if self.path.split("?")[0].rstrip("/") == "/api/status":
                     return self._json(200, mgr.status_report())
                 self._json(404, {"error": "not found"})
 
             def do_POST(self):
+                if not self._authorized():
+                    return self._json(401, {"error": "missing or wrong X-Api-Key"})
                 path = self.path.split("?")[0].rstrip("/")
                 try:
                     body = self._body()
@@ -1089,11 +1167,24 @@ class WifiManager:
                 self.process_request(req)
 
 
+def print_qr(cfg):
+    payload = qr_payload(cfg)
+    print("QR payload (print this as the camera sticker):\n" + payload)
+    if shutil.which("qrencode"):
+        subprocess.run(["qrencode", "-t", "ANSIUTF8", payload])
+        png = os.path.join(SECRET_DIR, "setup_qr.png")
+        subprocess.run(["qrencode", "-o", png, "-s", "10", payload])
+        print("PNG saved to", png)
+    else:
+        print("(install 'qrencode' to show the QR code here: sudo apt install qrencode)")
+
+
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
     ap = argparse.ArgumentParser(description="Wi-Fi auto-connect with Bluetooth setup")
     ap.add_argument("--config", default=os.path.join(here, "camera.ini"))
     ap.add_argument("--debug", action="store_true")
+    ap.add_argument("--qr", action="store_true", help="print the QR sticker payload and exit")
     args = ap.parse_args()
 
     logging.basicConfig(level=logging.DEBUG if args.debug else logging.INFO,
@@ -1103,6 +1194,8 @@ def main():
         sys.exit(1)
 
     cfg = load_config(args.config)
+    if args.qr:
+        return print_qr(cfg)
     log.info("Interface=%s  BLE name='%s'  control API port=%d", cfg["interface"],
              cfg["ble_name"], cfg["control_port"])
     WifiManager(cfg).run()
